@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Protected Question Paper</title>
+</head>
+
+<body>
+
+<h2>Login to Access Question Paper</h2>
+
+<div id="loginBox">
+
+Username: <input type="text" id="username"><br><br>
+Password: <input type="password" id="password"><br><br>
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<div id="qrSection" style="display:none;">
+
+<h2>Question Paper QR Code</h2>
+
+<button onclick="qrgenerate()">Generate QR Code</button>
+
+<br><br>
+
+<img id="qrimg" style="display:none;">
+
+</div>
+
+<script>
+
+function login(){
+
+var user = document.getElementById("username").value;
+var pass = document.getElementById("password").value;
+
+if(user === "admin" && pass === "exam123"){
+
+document.getElementById("loginBox").style.display="none";
+document.getElementById("qrSection").style.display="block";
+
+}else{
+
+alert("Invalid username or password");
+
+}
+
+}
+
+function qrgenerate(){
+
+var link="https://docs.google.com/document/d/1ZxuLogCZTB45TTqZ_cvfRPOdHJK1mhPydoS55zLNqCE/edit?usp=sharing";
+
+var qrimg=document.getElementById("qrimg");
+
+qrimg.src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(link);
+
+qrimg.style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
